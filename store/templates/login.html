@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="background-color: #94a3b8;"></div>
+<section class="mt-5 pt-5" >
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center ">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black mt-5" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                  <div class="logo text-center">
+                    <p class="logo-text">Login</p>
+                  </div>
+                  {% if error %}
+                  <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                   </div>
+                  {% endif %}
+                  <form class="mx-1 mx-md-4" method="POST" action="/login">
+                    {% csrf_token %}
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 mt-4 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Your Email</label>
+                        <input value="{{values.email}}" type="email" name="email" id="form3Example3c" class="form-control" placeholder="example@gmail.com" />
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3  mt-4 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Password</label>
+                          <input id="password-field" type="password" class="form-control" name="password" placeholder="*******">
+                          <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                      </div>
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Login</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img src="https://freepngimg.com/thumb/makeup/166130-product-pic-cosmetics-hd-image-free.png"
+                    class="img-fluid" alt="Sample image">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- Include jQuery -->
+  <script>
+    $(document).ready(function() { // Ensure the document is fully loaded before executing script
+      $(".toggle-password").click(function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
+    });
+  </script>
+  
+{% endblock %}

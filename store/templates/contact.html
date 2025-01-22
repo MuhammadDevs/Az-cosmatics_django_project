@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+
+<div class="mt-3 pt-5"></div>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100"
+                src="https://www.makeupcityshop.com/cdn/shop/files/ST-desktop_2ceb28f6-4378-489d-bfab-16d86208e487.gif?v=1732996709"
+                alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100"
+                src="https://www.makeupcityshop.com/cdn/shop/files/Jannsen-desktop_00c14306-cd26-4afb-9a22-749bfba018f7.gif?v=1732996939"
+                alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100"
+                src="https://www.makeupcityshop.com/cdn/shop/files/Lamel-Desktop_937ff743-cb29-45db-8090-8a752e9df5f3.gif?v=1732997584"
+                alt="Third slide">
+        </div>
+    </div>
+</div>
+
+<section class="" style="background-color: #94a3b8;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black mt-5 mb-5" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-12 col-lg-12 col-xl-8 order-5 order-lg-2">
+                <div class="logo text-center">
+                    <p class="logo-text">Contact Us</p>
+                  </div>
+                <form class="mx-1 mx-md-4" method="POST" action="/contact">
+                  {% csrf_token %}
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 mt-4 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Your Name</label>
+                      <input type="text" name="name" id="form3Example1c" class="form-control form-control-lg" placeholder="Your Name" required>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 mt-4 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Your Email</label>
+                      <input type="email" name="email" id="form3Example3c" class="form-control form-control-lg" placeholder="example@gmail.com" required>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-pen fa-lg me-3 mt-4 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Subject</label>
+                      <input type="text" name="subject" id="form3Example1c" class="form-control form-control-lg" placeholder="Subject" required>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-comment fa-lg me-3 mt-4 fa-fw"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4c">Message</label>
+                      <textarea name="message" id="form3Example4c" class="form-control form-control-lg" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Send Message</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-area " id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="contact-content text-center">
+                    <div class="logo">
+                        <a class="logo-text" href="/">Deeze-Cosmetics</a>
+                        <div class="logo-shine"></div>
+                    </div>
+                    <p>Deeze Cosmetics, your ultimate destination for all things beauty.
+                        Discover a world of elegance, quality, and care crafted just for you!</p>
+                    <div class="hr"></div>
+                    <h6>Main Street Jaddah Town rahim Yar Khan, Rahim Yar Khan.</h6>
+                    <h6>+92 329 4846387<span>|</span>+92 318 0064727</h6>
+                    <div class="contact-social">
+                        <ul>
+                            <li><a class="hover-target" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-github"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-behance"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popup Modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Thank you for contacting us. We will get back to you shortly!
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Show modal only if 'submitted' exists in the URL query string
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("submitted")) {
+            const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+            thankYouModal.show();
+        }
+    });
+</script>
+
+<footer>
+  <div class="container">
+      <p class="mb-0 text-center">Copyright &copy; 
+          <span id="current-year"></span>
+          <span class="logo">
+              <a class="logo-text" href="/" style="font-size:10px">Deeze-Cosmetics</a>
+              <span class="logo-shine"></span>
+          </span> All Rights Reserved.
+      </p>
+  </div>
+</footer>
+
+<script>
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+
+  // Set the current year in the footer
+  document.getElementById("current-year").textContent = currentYear;
+</script>
+
+{% endblock %}

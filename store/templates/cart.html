@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+<div class="container mt-5 pt-5">
+    <div class="rounded m-4 p-4 shadow-lg" style="background-color: #444;">
+      <div class="logo text-center">
+        <a class="logo-text" href="/order">Your Cart</a>
+        <div class="logo-shine"></div>
+      </div>
+        <hr class="my-4" style="border-color: #6c757d;">
+        <!-- Responsive table wrapper -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead style="background-color: #555; color: #f8f9fa;">
+                    <tr>
+                        <th scope="col">Sr No</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <img src="{{ product.image.url }}" class="rounded-circle img-fluid" style="max-height: 80px; max-width: 80px;" alt="">
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>Rs {{ product.price }}</td>
+                        <td class="text-wrap" style="max-width: 250px;">{{ product.description }}</td>
+                        <td>{{ product|cart_quantity:request.session.cart }}</td>
+                        <td>Rs {{ product|price_total:request.session.cart }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="6" class="text-end" style="border-color: #6c757d;">Total</th>
+                        <th style="border-color: #6c757d;">Rs {{ products|total_cart_price:request.session.cart }}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <hr class="my-4" style="border-color: #6c757d;">
+        <div class="text-end">
+            <a href="#" class="btn btn-outline-info btn-lg rounded-pill px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Checkout</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Checkout -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Checkout Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="m-2 p-3">
+                    <form action="/check-out" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" id="address" name="address" class="form-control rounded-pill shadow-sm" placeholder="Enter your address">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" id="phone" name="phone" class="form-control rounded-pill shadow-sm" placeholder="Enter your phone number">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <input type="submit" class="btn btn-outline-info rounded-pill shadow-lg px-4 py-2 mt-3" value="Check Out">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

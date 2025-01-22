@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css"
+    integrity="sha512-DJLNx+VLY4aEiEQFjiawXaiceujj5GA7lIY8CHCIGQCBPfsEG0nGz1edb4Jvw1LR7q031zS5PpPqFuPA8ihlRA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Deeze-Cosmatics</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css'%}">
+  <link rel="icon" href="https://mir-s3-cdn-cf.behance.net/projects/max_808/9a0e1f89780299.Y3JvcCwxMTkyLDkzMywxMDMsMA.jpg">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="logo">
+        <a class="logo-text" href="/">Deeze-Cosmetics</a>
+        <div class="logo-shine"></div>
+      </div>
+    </div>
+
+     <!-- Combined Navigation Links -->
+  <div class="nav-links">
+    <a href="/" class="nav-link">
+      <span>Home</span>
+      <div class="link-effect"></div>
+    </a>
+    <a href="/about" class="nav-link">
+      <span>About</span>
+      <div class="link-effect"></div>
+    </a>
+    <a href="/contact" class="nav-link">
+      <span>Contact</span>
+      <div class="link-effect"></div>
+    </a>
+    <a href="/cart" class="nav-link">
+      <span>Cart ({{ request.session.cart|length }})</span>
+      <div class="link-effect"></div>
+    </a>
+    {% if request.session.customer %}
+    <a href="/order" class="nav-link">
+      <span>Orders</span>
+      <div class="link-effect"></div>
+    </a>
+    <a href="/logout" class="nav-link">
+      <span>Logout</span>
+      <div class="link-effect"></div>
+    </a>
+    {% else %}
+    <a href="/login" class="nav-link">
+      <span>Login</span>
+      <div class="link-effect"></div>
+    </a>
+    <a href="/signup" class="nav-link">
+      <span>SignUp</span>
+      <div class="link-effect"></div>
+    </a>
+    {% endif %}
+  </div>
+
+    <!-- Mobile Toggle Button -->
+    <button class="mobile-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="menu-header">
+      <div class="logo">
+        <span class="logo-text">Deeze-Cosmetics</span>
+      </div>
+      <button class="close-menu" onclick="toggleMenu()">
+        <span class="close-icon"></span>
+      </button>
+    </div>
+    <div class="menu-links">
+      <a href="/" class="menu-link"><span>Home</span></a>
+      <a href="/about" class="menu-link"><span>About</span></a>
+      <a href="/contact" class="menu-link"><span>Contact</span></a>
+      <a href="/cart" class="menu-link"><span>Cart ({{ request.session.cart|length }})</span></a>
+      {% if request.session.customer %}
+      <a href="/order" class="menu-link"><span>Orders</span></a>
+      <a href="/logout" class="menu-link"><span>Logout</span></a>
+      {% else %}
+      <a href="/login" class="menu-link"><span>Login</span></a>
+      <a href="/signup" class="menu-link"><span>SignUp</span></a>
+      {% endif %}
+    </div>
+  </div>
+
+  
+
+
+  <!-- Script for Toggle Menu -->
+  <script>
+    function toggleMenu() {
+      const mobileMenu = document.querySelector('.mobile-menu');
+      mobileMenu.classList.toggle('active');
+    }
+  </script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-srG1dPbh+Z0YJN2AmUEfsHB6WUiw4XXTbDDNUFOPWDOiG26p30G8lAjM6i/slr23"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-koQQkqAHv1QmCCO/xF6VWbbylH0n2PBnBbfvr18RjoE4yBiErD7GCfZniKCDHc3l"
+    crossorigin="anonymous"></script>
+
+  {% block content %}
+
+  {% endblock %}
+
+</body>
+
+</html>

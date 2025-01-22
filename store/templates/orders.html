@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+<div class="mt-5 pt-5"></div>
+<div class="container mt-5 pt-5" style="background-color: #444;">
+  <div class="border rounded m-4 p-4 shadow-lg">
+    <div class="logo text-center">
+      <a class="logo-text" href="/order">Your Order</a>
+      <div class="logo-shine"></div>
+    </div>
+    <hr class="my-4">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Sr No</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Cost</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in order %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>
+              <img src="{{ order.product.image.url }}" class="rounded-circle img-fluid" style="max-height: 80px; max-width: 80px;" alt="">
+            </td>
+            <td>{{ order.product.name }}</td>
+            <td>Rs {{ order.price }}</td>
+            <td>{{ order.date }}</td>
+            <td class="text-wrap" style="max-width: 200px;">{{ order.product.description }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>Rs {{ order.quantity|multiply:order.price }}</td>
+            {% if order.status %}
+            <td>
+              <span class="badge bg-success text-light px-3 py-2 rounded-pill shadow-sm" style="font-size: 0.9rem;">
+                <i class="fas fa-check-circle"></i> Completed
+              </span>
+            </td>
+            {% else %}
+            <td>
+              <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow-sm" style="font-size: 0.9rem;">
+                <i class="fas fa-clock"></i> Pending
+              </span>
+            </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

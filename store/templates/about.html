@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+<style>
+    /* General Section Styling */
+    .section_all {
+        background-color:  #5a5959;
+        color: #f8f9fa;
+    }
+
+    .section_title_all h3 {
+        font-weight: 700;
+        color: #f8f9fa;
+    }
+
+    .section_title_all .text-custom {
+        color: #94a3b8;
+    }
+
+    .section_subtitle {
+        max-width: 550px;
+        margin: 0 auto;
+        font-size: 16px;
+        color: #adb5bd;
+    }
+
+    .section-title-border {
+        background-color: #94a3b8;
+        height: 2px;
+        width: 50px;
+        margin-top: 10px;
+    }
+
+    /* About Content */
+    .about_icon i {
+        font-size: 28px;
+        height: 65px;
+        width: 65px;
+        line-height: 65px;
+        display: inline-block;
+        background: #94a3b8;
+        border-radius: 35px;
+        color: #444;
+        box-shadow: 0 8px 20px -2px rgba(0, 0, 0, 0.4);
+    }
+
+    .about_header_main .about_heading {
+        font-size: 22px;
+        color: #f8f9fa;
+    }
+
+    .text-muted-light {
+        color: #adb5bd;
+    }
+
+    .img_about img {
+        border: 2px solid #94a3b8;
+        border-radius: 10px;
+    }
+
+    /* About Boxes */
+    .about_content_box_all {
+        background: #555;
+        padding: 28px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .about_content_box_all:hover {
+        transform: translateY(-10px);
+        background: #666;
+    }
+
+    .about_content_box_all h5 {
+        color: #f8f9fa;
+    }
+
+    .about_content_box_all p {
+        color: #adb5bd;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+        .about_header_main .about_heading {
+            font-size: 18px;
+        }
+
+        .about_icon i {
+            height: 55px;
+            width: 55px;
+            font-size: 20px;
+        }
+    }
+</style>
+<div class="mt-3 pt-5"></div>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100"
+                src="https://www.makeupcityshop.com/cdn/shop/files/ST-desktop_2ceb28f6-4378-489d-bfab-16d86208e487.gif?v=1732996709"
+                alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100"
+                src="https://www.makeupcityshop.com/cdn/shop/files/Jannsen-desktop_00c14306-cd26-4afb-9a22-749bfba018f7.gif?v=1732996939"
+                alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100"
+                src="https://www.makeupcityshop.com/cdn/shop/files/Lamel-Desktop_937ff743-cb29-45db-8090-8a752e9df5f3.gif?v=1732997584"
+                alt="Third slide">
+        </div>
+    </div>
+</div>
+
+<section class="section_all " id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section_title_all text-center mt-5 pt-5">
+                    <h3 class="font-weight-bold">Welcome To <span class="text-custom">Our Store</span></h3>
+                    <p class="section_subtitle mx-auto">Welcome to Deeze Cosmetics, your ultimate destination for all things beauty.
+                        Discover a world of elegance, quality, and care crafted just for you!</p>
+                    <div class="section-title-border mx-auto"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row vertical_content_manage mt-5">
+            <div class="col-lg-6">
+                <div class="about_header_main mt-3">
+                    <div class="about_icon_box">
+                        <div class="logo">
+                            <a class="logo-text" href="/">About Us</a>
+                            <div class="logo-shine"></div>
+                          </div>
+                    </div>
+                    <h4 class="about_heading text-capitalize font-weight-bold mt-4">At Deeze Cosmetics, we believe beauty is for everyone.</h4>
+                    <p class="text-muted-light mt-3">Our store is a haven for all beauty enthusiasts, offering a wide range of high-quality cosmetics to suit every skin type, tone, and preference. 
+                    </p>
+
+                    <p class="text-muted-light mt-3"> Our friendly and knowledgeable staff are here to assist you in finding the perfect products to enhance your natural beauty. Whether you’re a makeup beginner or a seasoned pro, Deeze Cosmetics is your one-stop destination for all things beauty. Step into our world of glamour and let us help you shine!</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="img_about mt-3">
+                    <img src="https://previews.123rf.com/images/subbotina/subbotina1008/subbotina100800060/7683095-make-up-makeup-accessories-background.jpg?fj=1" alt="About Us"
+                        class="img-fluid mx-auto d-block rounded shadow">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-4 mb-5 pb-5">
+                <div class="about_content_box_all mt-3">
+                    <div class="about_detail text-center">
+                        <div class="about_icon">
+                            <i class="fa-solid fa-spa"></i>
+                        </div>
+                        <h5 class="text-light text-capitalize mt-3 font-weight-bold">Trusted Products</h5>
+                        <p class="edu_desc mt-3 mb-0 text-muted-light">Discover the difference with our trusted products, designed to meet your every need. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-5 pb-5">
+                <div class="about_content_box_all mt-3">
+                    <div class="about_detail text-center">
+                        <div class="about_icon">
+                            <i class="fa-solid fa-medal"></i>
+                        </div>
+                        <h5 class="text-light text-capitalize mt-3 font-weight-bold">Quality Product</h5>
+                        <p class="edu_desc mb-0 mt-3 text-muted-light">We provide you with high-quality products that enhance your natural beauty.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-5 pb-5">
+                <div class="about_content_box_all mt-3">
+                    <div class="about_detail text-center">
+                        <div class="about_icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h5 class="text-light text-capitalize mt-3 font-weight-bold">On Time Delivery</h5>
+                        <p class="edu_desc mb-0 mt-3 text-muted-light">We guarantee on-time delivery, so you can enjoy your beauty essentials without delay. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-area" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="contact-content text-center">
+                    <div class="logo">
+                        <a class="logo-text" href="/">Deeze-Cosmetics</a>
+                        <div class="logo-shine"></div>
+                    </div>
+                    <p>Deeze Cosmetics, your ultimate destination for all things beauty.
+                        Discover a world of elegance, quality, and care crafted just for you!</p>
+                    <div class="hr"></div>
+                    <h6>Main Street Jaddah Town rahim Yar Khan, Rahim Yar Khan.</h6>
+                    <h6>+92 329 4846387<span>|</span>+92 318 0064727</h6>
+                    <div class="contact-social">
+                        <ul>
+                            <li><a class="hover-target" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-github"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-behance"></i></a></li>
+                            <li><a class="hover-target" href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p class="mb-0 text-center">Copyright &copy; 
+            <span id="current-year"></span>
+            <span class="logo">
+                <a class="logo-text" href="/" style="font-size:10px">Deeze-Cosmetics</a>
+                <span class="logo-shine"></span>
+            </span> All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+<script>
+    // Get the current year
+    const currentYear = new Date().getFullYear();
+
+    // Set the current year in the footer
+    document.getElementById("current-year").textContent = currentYear;
+</script>
+
+{% endblock %}

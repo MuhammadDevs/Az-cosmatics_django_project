@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+<div class="mt-3 pt-5"></div>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://www.makeupcityshop.com/cdn/shop/files/ST-desktop_2ceb28f6-4378-489d-bfab-16d86208e487.gif?v=1732996709" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.makeupcityshop.com/cdn/shop/files/Jannsen-desktop_00c14306-cd26-4afb-9a22-749bfba018f7.gif?v=1732996939" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://www.makeupcityshop.com/cdn/shop/files/Lamel-Desktop_937ff743-cb29-45db-8090-8a752e9df5f3.gif?v=1732997584" alt="Third slide">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5 pt-3">
+  <div class="row">
+    <h1 class="text-center" style="color: #9977fd;" >Our Products</h1>
+    <!-- Sidebar -->
+    <div class="col-lg-3 col-md-4 mb-4 mt-4">
+      <div class="sidebar-header text-center text-uppercase">Categories</div>
+      <div class="list-group">
+        {% for Catagories in Catagories %}
+        <a href="/?catagory={{ Catagories.id }}" class="list-group-item list-group-item-action">
+          {{ Catagories.name }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div id="products" class="col-lg-9 col-md-8 mt-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for Products in Products %}
+        <div class="col">
+          <div class="card h-100" id="{{Products.id}}">
+            <img src="{{ Products.image.url }}" class="card-img-top img-fluid" alt="{{ Products.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ Products.name }}</h5>
+              <h5 class="card-price"><b>Price: {{ Products.price }}</b></h5>
+              <p class="card-text">{{ Products.description }}</p>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="cart-footer p-2 text-center">
+              {% if Products|is_in_cart:request.session.cart %}
+              <div class="row g-2 align-items-center">
+                <form class="col-3" method="post" action="/#{{Products.id}}">
+                  {% csrf_token %}
+                  <input type="hidden" name="product" value="{{ Products.id }}">
+                  <input type="hidden" name="remove" type="text" value="True">
+                  <input type="submit" value=" - " class="btn btn-secondary btn-sm w-100">
+                </form>
+                <div class="col">
+                  <span>{{Products|cart_quantity:request.session.cart}} in cart</span>
+                </div>
+                <form class="col-3" method="post" action="/#{{Products.id}}">
+                  {% csrf_token %}
+                  <input type="hidden" name="product" value="{{ Products.id }}">
+                  <input type="submit" value=" + " class="btn btn-secondary btn-sm w-100">
+                </form>
+              </div>
+              {% else %}
+              <form method="POST" action="/#{{Products.id}}">
+                {% csrf_token %}
+                <input type="hidden" name="product" value="{{ Products.id }}">
+                <input type="submit" class="btn btn-primary btn-sm w-100" value="Add to Cart">
+              </form>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<section class="contact-area mt-5 pt-5 " id="contact">
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-6">
+              <div class="contact-content text-center">
+                  <div class="logo">
+                      <a class="logo-text" href="/">Deeze-Cosmetics</a>
+                      <div class="logo-shine"></div>
+                  </div>
+                  <p>Deeze Cosmetics, your ultimate destination for all things beauty.
+                      Discover a world of elegance, quality, and care crafted just for you!</p>
+                  <div class="hr"></div>
+                  <h6>Main Street Jaddah Town rahim Yar Khan, Rahim Yar Khan.</h6>
+                  <h6>+92 329 4846387<span>|</span>+92 318 0064727</h6>
+                  <div class="contact-social">
+                      <ul>
+                          <li><a class="hover-target" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a class="hover-target" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                          <li><a class="hover-target" href="#"><i class="fab fa-github"></i></a></li>
+                          <li><a class="hover-target" href="#"><i class="fab fa-behance"></i></a></li>
+                          <li><a class="hover-target" href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+      <p class="mb-0 text-center">Copyright &copy; 
+          <span id="current-year"></span>
+          <span class="logo">
+              <a class="logo-text" href="/" style="font-size:10px">Deeze-Cosmetics</a>
+              <span class="logo-shine"></span>
+          </span> All Rights Reserved.
+      </p>
+  </div>
+</footer>
+
+<script>
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+
+  // Set the current year in the footer
+  document.getElementById("current-year").textContent = currentYear;
+</script>
+
+{% endblock %}
